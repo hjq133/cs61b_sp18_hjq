@@ -32,6 +32,14 @@ public class Planet{
 		return Planet.G*(this.mass*p.mass)/Math.pow(this.calcDistance(p),2); 
 	}
 
+	public double calcForceExertedByX(Planet p){
+		return this.calcForceExertedBy(p)*(p.xxPos-this.xxPos)/this.calcDistance(p);
+	}
+
+	public double calcForceExertedByY(Planet p){
+		return this.calcForceExertedBy(p)*(p.yyPos-this.yyPos)/this.calcDistance(p);
+	}
+
 	public double calcNetForceExertedByX(Planet[] ppp){
 		double sumx = 0;
 		for(int i =0; i < ppp.length; i++){
@@ -39,7 +47,7 @@ public class Planet{
 				continue;
 			}
 			else{
-				sumx = this.calcForceExertedBy(ppp[i])*(ppp[i].xxPos-this.xxPos)/this.calcDistance(ppp[i]) + sumx;
+				sumx = this.calcForceExertedByX(ppp[i]) + sumx;
 			}
 		}
 		return sumx;
@@ -52,7 +60,7 @@ public class Planet{
 				continue;
 			}
 			else{
-				sumy = this.calcForceExertedBy(ppp[i])*(ppp[i].yyPos-this.yyPos)/this.calcDistance(ppp[i]) + sumy;
+				sumy = this.calcForceExertedByY(ppp[i]) + sumy;
 			}
 		}
 		return sumy;
