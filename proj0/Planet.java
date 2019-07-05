@@ -1,5 +1,5 @@
 public class Planet{
-	public static double G = 6.67e-11;
+	private static double G = 6.67e-11;  //private 只能在内部使用，而public可以通过外部构造对象来调用
 	public double xxPos;
 	public double yyPos;
 	public double xxVel;
@@ -15,7 +15,7 @@ public class Planet{
 		imgFileName = img;
 	}
 
-	public Planet(Planet p){
+	public Planet(Planet p){            //两种初始化Planet对象（object）的方式，这整个必须在class Planet类下  类似于def  __init__
 		xxPos = p.xxPos;
 		yyPos = p.yyPos;
 		xxVel = p.xxVel;
