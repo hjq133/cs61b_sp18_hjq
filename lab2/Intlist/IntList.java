@@ -50,7 +50,7 @@ public class IntList {
     public static IntList squareListIterative(IntList L) {
         if (L == null) {
             return null;
-        }
+        }//TODO:  fill in method
         IntList res = new IntList(L.first * L.first, null);
         IntList ptr = res;
         L = L.rest;
@@ -81,17 +81,29 @@ public class IntList {
      */
 
     public static IntList dcatenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+
+        if(A.rest == null) {
+            A.rest = B;
+        }
+        else{
+            A.rest = dcatenate(A.rest, B);
+        }
+        return A;
     }
 
     /**
      * Returns a list consisting of the elements of A followed by the
-     * * elements of B.  May NOT modify items of A.  Use 'new'.
+     * * elements of B.  May NOT modify items of A.  Use 'new'.Don
      */
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        if(A.rest == null){
+            if(B == null)
+            {
+                return null;
+            }
+            return new IntList(B.first, catenate(B.rest, null));
+        }
+        return new IntList(A.first, catenate(A.rest, B));
     }
 
 
