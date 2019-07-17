@@ -1,8 +1,8 @@
 // very easy , just draw the picture and you will see it
 
 public class LinkedListDeque<T> {
-    private int size;
-    private StuffNode sentinel;
+    public int size;
+    public StuffNode sentinel;
 
     /* define StuffNode class*/
     public class StuffNode {
@@ -102,7 +102,8 @@ public class LinkedListDeque<T> {
             return sentinel.next.item;
         } else {
             T temp = removeFirst();
-            T re = getRecursive(index - 1);  // recursive function ,first remove, cache the item, then add
+            T re = getRecursive(index - 1);
+            // recursive function ,first remove, cache the item, then add
             addFirst(temp);
             return re;
         }
