@@ -1,14 +1,14 @@
 // very easy , just draw the picture and you will see it
 
 public class LinkedListDeque<T> {
-    public int size;
-    public StuffNode sentinel;
+    private int size;
+    private StuffNode sentinel;  // should be private! not public!
 
     /* define StuffNode class*/
-    public class StuffNode {
-        public T item;
-        public StuffNode prev;
-        public StuffNode next;
+    private class StuffNode {
+        private T item;
+        private StuffNode prev;
+        private StuffNode next;
 
         /* define value constructor of */
         public StuffNode(T x, StuffNode p, StuffNode n) {
