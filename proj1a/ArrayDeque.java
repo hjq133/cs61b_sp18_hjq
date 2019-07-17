@@ -21,7 +21,7 @@ public class ArrayDeque<T> {
         if (a > items.length - 1) {
             return a - items.length;
         }
-        if (a < 0){
+        if (a < 0) {
             return a + items.length;
         }
         return a;

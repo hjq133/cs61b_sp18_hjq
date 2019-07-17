@@ -1,43 +1,47 @@
+// very easy , just draw the picture and you will see it
+
 public class LinkedListDeque<T> {
     private int size;
     private StuffNode sentinel;
 
+    /* define StuffNode class*/
     public class StuffNode {
-        public StuffNode prev;
         public T item;
+        public StuffNode prev;
         public StuffNode next;
+
+        /* define value constructor of */
+        public StuffNode(T x, StuffNode p, StuffNode n) {
+            item = x;
+            prev = p;
+            next = n;
+        }
     }
 
+    /* define the constructor for LinkedListDeque*/
     public LinkedListDeque() {
         size = 0;
-        sentinel = new StuffNode();
-        sentinel.item = null;
-        sentinel.prev = sentinel;
+        sentinel = new StuffNode(null, sentinel, sentinel);
         sentinel.next = sentinel;
+        sentinel.prev = sentinel;
     }
 
     public void addFirst(T item) {
         size += 1;
-        StuffNode L = new StuffNode();
-        L.item = item;
-        L.prev = sentinel;
-        L.next = sentinel.next;
+        StuffNode L = new StuffNode(item, sentinel, sentinel.next);
         sentinel.next.prev = L;
         sentinel.next = L;
     }
     
     public void addLast(T item) {
         size += 1;
-        StuffNode L = new StuffNode();
-        L.item = item;
-        L.prev = sentinel.prev;
-        L.next = sentinel;
+        StuffNode L = new StuffNode(item, sentinel.prev, sentinel);
         sentinel.prev.next = L;
         sentinel.prev = L;
     }
     
     public  boolean isEmpty() {
-        if (sentinel.prev == sentinel) {
+        if (size == 0) {
             return true;
         }
         return false;
@@ -56,7 +60,7 @@ public class LinkedListDeque<T> {
     }
     
     public T removeFirst() {
-        if (isEmpty()){
+        if (isEmpty()) {
             return null;
         }
         size -= 1;
@@ -98,7 +102,7 @@ public class LinkedListDeque<T> {
             return sentinel.next.item;
         } else {
             T temp = removeFirst();
-            T re = getRecursive(index - 1);
+            T re = getRecursive(index - 1);  // recursive function ,first remove, cache the item, then add
             addFirst(temp);
             return re;
         }
